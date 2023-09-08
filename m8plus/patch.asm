@@ -45,6 +45,61 @@ BITS	32
 ;  return result;
 ;}
 
+// TODO
+
+;void __usercall __noreturn AvSetDisplayMode_Preamble(int a1@<ebp>)
+;{
+;  int v1; // eax
+;  bool v2; // zf
+;  int v3; // eax
+;
+;  v1 = XboxHDMI_W8(0, 0);
+;  *(_DWORD *)(a1 - 32) = v1;
+;  if ( !v1 )
+;  {
+;    *(_DWORD *)(a1 + 16) = XboxHDMI_W32(62, *(_DWORD *)(a1 + 16));
+;    XboxHDMI_W32(66, *(_DWORD *)(a1 + 16));
+;    XboxHDMI_W8(80, MEMORY[0x8003C36C]);
+;    XboxHDMI_W8(81, MEMORY[0x8003C158]);
+;    v2 = MEMORY[0xFFFEE2DB](65816) == 0;
+;    v3 = -1;
+;    if ( !v2 )
+;      v3 = *(_DWORD *)(MEMORY[0x10118] + 8);
+;    XboxHDMI_W32(82, v3);
+;    MEMORY[0xFFFE52C1](100000);
+;  }
+;  JUMPOUT(0xCD9);
+;}
+
+;void __usercall __noreturn AvSetDisplayMode_FpDebug0(int a1@<ebp>)
+;{
+;  if ( !*(_DWORD *)(a1 - 32) )
+;    XboxHDMI_AV_R32(138, a1 - 36);
+;  JUMPOUT(0x12E2);
+;}
+
+;void __usercall __noreturn AvSetDisplayMode_CRTC(int a1@<ebp>)
+;{
+;  if ( !*(_DWORD *)(a1 - 32) )
+;    XboxHDMI_AV_R8(*(_DWORD *)(a1 + 8) - MEMORY[0x8003C398] + 104, a1 - 36);
+;  JUMPOUT(0x1264);
+;}
+
+;void __usercall __noreturn AvSetDisplayMode_AVP(_DWORD *a1@<edx>, int a2@<ebp>, int a3@<edi>, int a4@<esi>)
+;{
+;  _DWORD *v4; // [esp-Ch] [ebp-Ch]
+;
+;  if ( !*(_DWORD *)(a2 - 32) )
+;  {
+;    v4 = a1;
+;    XboxHDMI_AV_R32((_BYTE)a1 - MEMORY[0x8003C378], a2 - 36);
+;    a1 = v4;
+;    a3 = *(_DWORD *)(a2 - 36);
+;  }
+;  *(_DWORD *)(a4 + *a1) = a3;
+;  JUMPOUT(0x11AE);
+;}
+
 
 
 ; NTSTATUS __stdcall XboxHDMI_W32(uchar reg, uint32_t value)
