@@ -145,7 +145,7 @@ AvSetDisplayMode_Preamble:
     ; Send orginal video mode
     PUSH dword [EBP + 0x10]
     PUSH 0x3E
-    CALL _XboxHDMI_REG_W32
+    CALL _XboxHDMI_W32
     ; Handle Mode = 0 (Force 480P)
     MOV  ECX, dword [EBP + 0x10]
     OR   ECX, ECX
@@ -169,7 +169,7 @@ AvSetDisplayMode_Preamble_480p_Store:
     ; Send final video mode
     PUSH dword [EBP + 0x10]
     PUSH 0x42
-    CALL _XboxHDMI_REG_W32
+    CALL _XboxHDMI_W32
     ; Send encoder info
     PUSH dword [ADDR_TVEncoderSMBusID]
     PUSH 0x50
@@ -191,7 +191,7 @@ AvSetDisplayMode_Preamble_480p_Store:
 AvSetDisplayMode_Preamble_TitleID_Write:
     PUSH EAX
     PUSH 0x52
-    CALL _XboxHDMI_REG_W32
+    CALL _XboxHDMI_W32
     ; Wait 100ms
     PUSH 100000
     CALL FUNC_KeStallExecutionProcessor
