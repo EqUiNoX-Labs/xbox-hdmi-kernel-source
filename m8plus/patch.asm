@@ -10,6 +10,43 @@ BITS	32
 ;
 ; -------------------------------------------------------------------------------------------------
 
+
+;NTSTATUS __stdcall XboxHDMI_W32(uint8_t reg, uint32_t value)
+;{
+;    HalWriteSMBusValue(0x88, reg, 1, (value & 0xffff));
+;    return HalWriteSMBusValue(0x88, reg + 2, 1, ((value >> 16) & 0xffff));
+;}
+
+;NTSTATUS __stdcall XboxHDMI_W8(uint8_t reg, uint8_t value)
+;{
+;    return HalWriteSMBusValue(0x88, reg, 0, value;
+;}
+
+;NTSTATUS __stdcall XboxHDMI_W8(uint8_t reg, uint8_t value)
+;{
+;    return HalWriteSMBusValue(0x88, reg, 0, value;
+;}
+
+;NTSTATUS __stdcall XboxHDMI_AV_R8(uint8_t reg, uint64_t value)
+;{
+;    return HalWriteSMBusValue(0x86, reg, 0, value;
+;}
+
+;NTSTATUS __stdcall XboxHDMI_AV_R32(uint8_t reg, uint32_t value)
+;{
+;  uint8_t* valBytes = (uint8_t*)&value;
+;
+;  NTSTATUS result = 0
+;  for (uint32_t i = 0; i < 4; ++i )
+;  {
+;    NTSTATUS status = XboxHDMI_AV_R8(reg + i, valBytes[i]);
+;    result |= status;
+;  }
+;  return result;
+;}
+
+
+
 ; NTSTATUS __stdcall XboxHDMI_W32(uchar reg, uint32_t value)
 _XboxHDMI_W32:
     push ebp
